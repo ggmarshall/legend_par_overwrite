@@ -1,45 +1,45 @@
 {
     "001": {
-        "operation1": {
-            "inputs":["cuspEmax"],
-            "outputs":["cal_energy"] ,
+        "energy_calibration": {
+            "inputs":["dsp/cuspEmax"],
+            "outputs":["hit/cal_energy"] ,
             "function":"a+b*cuspEmax",
             "pars":{"a":1, "b":1}
         },
 
-        "operation2": {
-            "inputs":["A_max", "cuspEmax", "cuspEmax_ctc"],
-            "outputs":["aoe_classifier"] ,
+        "aoe_calibration": {
+            "inputs":["dsp/A_max", "dsp/cuspEmax", "dsp/cuspEmax_ctc"],
+            "outputs":["hit/aoe_classifier"] ,
             "function":"(((A_max/cuspEmax)/(a+b*cuspEmax_ctc)) -1 )/sqrt(c+(d/cuspEmax_ctc)**e)",
             "pars":{"a":1, "b":1, "c":1, "d":1, "e":1}
         },
 
-        "operation3": {
-            "inputs":["aoe_classifier"],
-            "outputs":["aoe_pass"] ,
+        "aoe_cut": {
+            "inputs":["hit/aoe_classifier"],
+            "outputs":["hit/aoe_pass"] ,
             "function":"a<aoe_pass<b",
             "pars":{"a":-1, "b":1}
         }
     },
 
     "002": {
-        "operation1": {
-            "inputs":["cuspEmax"],
-            "outputs":["cal_energy"] ,
+        "energy_calibration": {
+            "inputs":["dsp/cuspEmax"],
+            "outputs":["hit/cal_energy"] ,
             "function":"a+b*cuspEmax",
             "pars":{"a":1, "b":1}
         },
 
-        "operation2": {
-            "inputs":["A_max", "cuspEmax", "cuspEmax_ctc"],
-            "outputs":["aoe_classifier"] ,
+        "aoe_calibration": {
+            "inputs":["dsp/A_max", "dsp/cuspEmax", "dsp/cuspEmax_ctc"],
+            "outputs":["hit/aoe_classifier"] ,
             "function":"(((A_max/cuspEmax)/(a+b*cuspEmax_ctc)) -1 )/sqrt(c+(d/cuspEmax_ctc)**e)",
             "pars":{"a":1, "b":1, "c":1, "d":1, "e":1}
         },
 
-        "operation3": {
-            "inputs":["aoe_classifier"],
-            "outputs":["aoe_pass"] ,
+        "aoe_cut": {
+            "inputs":["hit/aoe_classifier"],
+            "outputs":["hit/aoe_pass"] ,
             "function":"a<aoe_pass<b",
             "pars":{"a":-1, "b":1}
         }
